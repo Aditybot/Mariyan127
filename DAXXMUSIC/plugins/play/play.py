@@ -163,7 +163,7 @@ async def play_commnd(
                     plist_id = (url.split("=")[1]).split("&")[0]
                 else:
                     plist_id = url.split("=")[1]
-                img = config.PLAYLIST_IMG_URL
+                img = "https://github.com/Aditybot/Mariyan127/tree/Master/DAXXMUSIC/assets/thumbnail.jpg"
                 cap = _["play_10"]
             elif "https://youtu.be" in url:
                 videoid = url.split("/")[-1].split("?")[0]
@@ -216,7 +216,7 @@ async def play_commnd(
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "spalbum"
-                img = config.SPOTIFY_ALBUM_IMG_URL
+                img = "https://github.com/Aditybot/Mariyan127/tree/Master/DAXXMUSIC/assets/thumbnail.jpg"
                 cap = _["play_11"].format(app.mention, message.from_user.mention)
             elif "artist" in url:
                 try:
