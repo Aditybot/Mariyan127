@@ -83,7 +83,7 @@ def get_video_info(title):
 
 
 
-@app.on_message(filters.command("porn"))
+@app.on_message(filters.command("kanil"))
 async def get_random_video_info(client, message):
     if len(message.command) == 1:
         await message.reply("Please provide a title to search.")
@@ -110,7 +110,7 @@ async def get_random_video_info(client, message):
 ######
 
 
-@app.on_message(filters.command("xnxx"))
+@app.on_message(filters.command("ajai"))
 async def get_random_video_info(client, message):
     if len(message.command) == 1:
         await message.reply("Please provide a title to search.")
