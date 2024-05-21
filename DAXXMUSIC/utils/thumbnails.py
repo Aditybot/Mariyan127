@@ -105,7 +105,7 @@ async def get_thumb(videoid):
     image2 = image1.convert("RGBA")
     background = image2.filter(filter=ImageFilter.BoxBlur(0))
     enhancer = ImageEnhance.Brightness(background)
-    background = enhancer.enhance(0.6)
+    background = enhancer.enhance(0.100)
     draw = ImageDraw.Draw(background)
     arial = ImageFont.truetype("DAXXMUSIC/assets/assets/font2.ttf", 30)
     font = ImageFont.truetype("DAXXMUSIC/assets/assets/font.ttf", 30)
@@ -150,7 +150,7 @@ async def get_thumb(videoid):
     draw.text((1080, 400), duration, (255, 255, 255), font=arial)
 
     play_icons = Image.open("DAXXMUSIC/assets/assets/play_icons.png")
-    play_icons = play_icons.resize((0, 0))
+    play_icons = play_icons.resize((580, 62))
     background.paste(play_icons, (text_x_position, 450), play_icons)
 
     try:
