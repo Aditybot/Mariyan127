@@ -103,7 +103,7 @@ async def get_thumb(videoid):
     youtube = Image.open("DAXXMUSIC/assets/thum.png")
     image1 = changeImageSize(1280, 720, youtube)
     image2 = image1.convert("RGBA")
-    background = image2.filter(filter=ImageFilter.BoxBlur(100))
+    background = image2.filter(filter=ImageFilter.BoxBlur(0))
     enhancer = ImageEnhance.Brightness(background)
     background = enhancer.enhance(0.6)
     draw = ImageDraw.Draw(background)
