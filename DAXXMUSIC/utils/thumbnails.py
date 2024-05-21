@@ -132,14 +132,14 @@ async def get_thumb(videoid):
     white_length = line_length - red_length
 
     
-    start_point_red = (text_x_position, 380)
-    end_point_red = (text_x_position + red_length, 380)
-    draw.line([start_point_red, end_point_red], fill="red", width=9)
+    start_point_red = (text_x_position, )
+    end_point_red = (text_x_position + red_length, )
+    draw.line([start_point_red, end_point_red], fill="red", width=0)
 
     
-    start_point_white = (text_x_position + red_length, 380)
-    end_point_white = (text_x_position + line_length, 380)
-    draw.line([start_point_white, end_point_white], fill="white", width=8)
+    start_point_white = (text_x_position + red_length, )
+    end_point_white = (text_x_position + line_length, )
+    draw.line([start_point_white, end_point_white], fill="white", width=0)
 
     
     circle_radius = 1
