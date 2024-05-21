@@ -67,7 +67,7 @@ def crop_center_circle(img, output_size, border, crop_scale=1.5):
 
 
 async def get_thumb(videoid):
-    if os.path.isfile("DAXXMUSIC/assets/thum.png"):
+    if os.path.isfile(f"cache/{videoid}_v4.png"):
         return f"cache/{videoid}_v4.png"
 
     url = f"https://www.youtube.com/watch?v={videoid}"
@@ -96,14 +96,14 @@ async def get_thumb(videoid):
     async with aiohttp.ClientSession() as session:
         async with session.get(thumbnail) as resp:
             if resp.status == 200:
-                f = await aiofiles.open("DAXXMUSIC/assets/thum.png", mode="wb")
+                f = await aiofiles.open(f"cache/thumb{videoid}.png", mode="wb")
                 await f.write(await resp.read())
                 await f.close()
 
     youtube = Image.open("DAXXMUSIC/assets/thum.png")
     image1 = changeImageSize(1280, 720, youtube)
     image2 = image1.convert("RGBA")
-    background = image2.filter(filter=ImageFilter.BoxBlur(100))
+    background = image2.filter(filter=ImageFilter.BoxBlur(50))
     enhancer = ImageEnhance.Brightness(background)
     background = enhancer.enhance(0.6)
     draw = ImageDraw.Draw(background)
@@ -149,13 +149,13 @@ async def get_thumb(videoid):
     draw.text((text_x_position, 400), "00:00", (255, 255, 255), font=arial)
     draw.text((1080, 400), duration, (255, 255, 255), font=arial)
 
-    play_icons = Image.open("DAXXMUSIC/assets/thum.png")
+    play_icons = Image.open("DAXXMUSIC/assets/assets/play_icons.png")
     play_icons = play_icons.resize((580, 62))
     background.paste(play_icons, (text_x_position, 450), play_icons)
 
     try:
-        os.remove("DAXXMUSIC/assets/thum.png")
+        os.remove(f"cache/thumb{videoid}.png")
     except:
         pass
-    background.save("DAXXMUSIC/assets/thum.png")
-    return f"DAXXMUSIC/assets/thum.png"
+    background.save(f"cache/{videoid}_v4.png")
+    return f"cache/{videoid}_v4.png"
