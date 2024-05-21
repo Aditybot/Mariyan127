@@ -105,7 +105,7 @@ async def get_thumb(videoid):
     image2 = image1.convert("RGBA")
     background = image2.filter(filter=ImageFilter.BoxBlur(0))
     enhancer = ImageEnhance.Brightness(background)
-    background = enhancer.enhance(0.10)
+    background = enhancer.enhance(0.1)
     draw = ImageDraw.Draw(background)
     arial = ImageFont.truetype("DAXXMUSIC/assets/assets/font2.ttf", 30)
     font = ImageFont.truetype("DAXXMUSIC/assets/assets/font.ttf", 30)
