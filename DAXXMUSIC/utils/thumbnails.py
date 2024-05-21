@@ -105,7 +105,7 @@ async def get_thumb(videoid):
     image2 = image1.convert("RGBA")
     background = image2.filter(filter=ImageFilter.BoxBlur(1))
     enhancer = ImageEnhance.Brightness(background)
-    background = enhancer.enhance(0.10)
+    background = enhancer.enhance(0.1)
     draw = ImageDraw.Draw(background)
     arial = ImageFont.truetype("DAXXMUSIC/assets/assets/font2.ttf", 30)
     font = ImageFont.truetype("DAXXMUSIC/assets/assets/font.ttf", 30)
@@ -142,8 +142,8 @@ async def get_thumb(videoid):
     draw.line([start_point_white, end_point_white], fill="white", width=8)
 
     
-    circle_radius = 10 
-    circle_position = (end_point_red[0], end_point_red[1])
+    circle_radius = 1
+    circle_position = (end_point_red[0], end_point_red[0])
     draw.ellipse([circle_position[0] - circle_radius, circle_position[1] - circle_radius,
                   circle_position[0] + circle_radius, circle_position[1] + circle_radius], fill="red")
     draw.text((text_x_position, 400), "00:00", (255, 255, 255), font=arial)
