@@ -67,7 +67,7 @@ def crop_center_circle(img, output_size, border, crop_scale=1.5):
 
 
 async def get_thumb(videoid):
-    if os.path.isfile(f"cache/{videoid}_v4.png"):
+    if os.path.isfile("DAXXMUSIC/assets/thum.png"):
         return f"cache/{videoid}_v4.png"
 
     url = f"https://www.youtube.com/watch?v={videoid}"
@@ -96,14 +96,14 @@ async def get_thumb(videoid):
     async with aiohttp.ClientSession() as session:
         async with session.get(thumbnail) as resp:
             if resp.status == 200:
-                f = await aiofiles.open(f"cache/thumb{videoid}.png", mode="wb")
+                f = await aiofiles.open("DAXXMUSIC/assets/thum.png", mode="wb")
                 await f.write(await resp.read())
                 await f.close()
 
     youtube = Image.open("DAXXMUSIC/assets/thum.png")
     image1 = changeImageSize(1280, 720, youtube)
     image2 = image1.convert("RGBA")
-    background = image2.filter(filter=ImageFilter.BoxBlur(20))
+    background = image2.filter(filter=ImageFilter.BoxBlur(100))
     enhancer = ImageEnhance.Brightness(background)
     background = enhancer.enhance(0.6)
     draw = ImageDraw.Draw(background)
@@ -154,8 +154,8 @@ async def get_thumb(videoid):
     background.paste(play_icons, (text_x_position, 450), play_icons)
 
     try:
-        os.remove(f"cache/thumb{videoid}.png")
+        os.remove("DAXXMUSIC/assets/thum.png")
     except:
         pass
-    background.save(f"cache/{videoid}_v4.png")
-    return f"cache/{videoid}_v4.png"
+    background.save("DAXXMUSIC/assets/thum.png")
+    return f"DAXXMUSIC/assets/thum.png"
