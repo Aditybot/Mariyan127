@@ -150,7 +150,7 @@ async def get_thumb(videoid):
     draw.text((1080, 400), duration, (255, 255, 255), font=arial)
 
     play_icons = Image.open("DAXXMUSIC/assets/assets/play_icons.png")
-    play_icons = play_icons.resize((580, 62))
+    play_icons = play_icons.resize((0, 0))
     background.paste(play_icons, (text_x_position, 450), play_icons)
 
     try:
