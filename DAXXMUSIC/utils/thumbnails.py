@@ -128,7 +128,7 @@ async def get_thumb(videoid):
     line_length = 580  
 
     
-    red_length = int(line_length * 0.6)
+    red_length = int(line_length * 0.1)
     white_length = line_length - red_length
 
     
