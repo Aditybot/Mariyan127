@@ -74,7 +74,7 @@ async def get_thumb(videoid):
     results = VideosSearch(url, limit=1)
     for result in (await results.next())["result"]:
         try:
-            title = result["t"]
+            title = result["title"]
             title = re.sub("\W+", " ", title)
             title = title.title()
         except:
@@ -83,13 +83,13 @@ async def get_thumb(videoid):
             duration = result["duration"]
         except:
             duration = "Unknown Mins"
-        thumbnail = result["t"][0]["url"].split("?")[0]
+        thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         try:
-            views = result["v"]["short"]
+            views = result["viewCount"]["short"]
         except:
             views = "Unknown Views"
         try:
-            channel = result["c"]["n"]
+            channel = result["channel"]["name"]
         except:
             channel = "Unknown Channel"
 
