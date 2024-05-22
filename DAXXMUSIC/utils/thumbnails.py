@@ -112,7 +112,7 @@ async def get_thumb(videoid):
     title_font = ImageFont.truetype("DAXXMUSIC/assets/assets/font3.ttf", 45)
 
 
-    circle_thumbnail = crop_center_circle(youtube, 400, 20)
+    circle_thumbnail = crop_center_circle(youtube, 0, 0)
     circle_thumbnail = circle_thumbnail.resize((400, 400))
     circle_position = (120, 160)
     background.paste(circle_thumbnail, circle_position, circle_thumbnail)
@@ -134,12 +134,12 @@ async def get_thumb(videoid):
     
     start_point_red = (text_x_position, 380)
     end_point_red = (text_x_position + red_length, 380)
-    draw.line([start_point_red, end_point_red], fill="red", width=9)
+    draw.line([start_point_red, end_point_red], fill="red", width=2)
 
     
     start_point_white = (text_x_position + red_length, 380)
     end_point_white = (text_x_position + line_length, 380)
-    draw.line([start_point_white, end_point_white], fill="white", width=8)
+    draw.line([start_point_white, end_point_white], fill="white", width=1)
 
     
     circle_radius = 1 
@@ -150,7 +150,7 @@ async def get_thumb(videoid):
     draw.text((1080, 400), duration, (255, 255, 255), font=arial)
 
     play_icons = Image.open("DAXXMUSIC/assets/thum.png")
-    play_icons = play_icons.resize((580, 62))
+    play_icons = play_icons.resize((0, 0))
     background.paste(play_icons, (text_x_position, 450), play_icons)
 
     try:
