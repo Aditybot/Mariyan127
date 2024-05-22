@@ -100,12 +100,12 @@ async def get_thumb(videoid):
                 await f.write(await resp.read())
                 await f.close()
 
-    youtube = Image.open(f"cache/thumb{videoid}.png")
+    youtube = Image.open("DAXXMUSIC/assets/thum.png")
     image1 = changeImageSize(1280, 720, youtube)
     image2 = image1.convert("RGBA")
-    background = image2.filter(filter=ImageFilter.BoxBlur(20))
+    background = image2.filter(filter=ImageFilter.BoxBlur(0))
     enhancer = ImageEnhance.Brightness(background)
-    background = enhancer.enhance(0.6)
+    background = enhancer.enhance(0.9)
     draw = ImageDraw.Draw(background)
     arial = ImageFont.truetype("DAXXMUSIC/assets/assets/font2.ttf", 30)
     font = ImageFont.truetype("DAXXMUSIC/assets/assets/font.ttf", 30)
@@ -142,14 +142,14 @@ async def get_thumb(videoid):
     draw.line([start_point_white, end_point_white], fill="white", width=8)
 
     
-    circle_radius = 10 
+    circle_radius = 1 
     circle_position = (end_point_red[0], end_point_red[1])
     draw.ellipse([circle_position[0] - circle_radius, circle_position[1] - circle_radius,
                   circle_position[0] + circle_radius, circle_position[1] + circle_radius], fill="red")
     draw.text((text_x_position, 400), "00:00", (255, 255, 255), font=arial)
     draw.text((1080, 400), duration, (255, 255, 255), font=arial)
 
-    play_icons = Image.open("DAXXMUSIC/assets/assets/play_icons.png")
+    play_icons = Image.open("DAXXMUSIC/assets/thum.png")
     play_icons = play_icons.resize((580, 62))
     background.paste(play_icons, (text_x_position, 450), play_icons)
 
