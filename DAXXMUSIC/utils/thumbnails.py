@@ -125,7 +125,7 @@ async def get_thumb(videoid):
     draw.text((text_x_position, 320), f"{channel}  |  {views[:23]}", (255, 255, 255), font=arial)
 
     
-    line_length = 580
+    line_length = 580  
 
     
     red_length = int(line_length * 0.6)
