@@ -74,24 +74,24 @@ async def get_thumb(videoid):
     results = VideosSearch(url, limit=1)
     for result in (await results.next())["result"]:
         try:
-            title = result["title"]
+            title = result["t"]
             title = re.sub("\W+", " ", title)
             title = title.title()
         except:
-            title = "Unsupported Title"
+            title = ""
         try:
-            duration = result["duration"]
+            duration = result["d"]
         except:
-            duration = "Unknown Mins"
+            duration = ""
         thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         try:
-            views = result["viewCount"]["short"]
+            views = result["v"]["s"]
         except:
-            views = "Unknown Views"
+            views = "U"
         try:
-            channel = result["channel"]["name"]
+            channel = result["c"]["n"]
         except:
-            channel = "Unknown Channel"
+            channel = ""
    
     async with aiohttp.ClientSession() as session:
         async with session.get(thumbnail) as resp:
