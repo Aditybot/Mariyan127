@@ -79,7 +79,7 @@ async def get_thumb(videoid):
             title = title.title()
         except:
             title = "Unsupported Title"
-          try:
+        try:
             duration = result["duration"]
         except:
             duration = "Unknown Mins"
@@ -90,7 +90,7 @@ async def get_thumb(videoid):
             views = "Unknown Views"
         try:
             channel = result["c"]["n"]
-       except:
+        except:
             channel = "Unknown Channel"
 
     async with aiohttp.ClientSession() as session:
