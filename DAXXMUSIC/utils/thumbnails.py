@@ -79,18 +79,15 @@ async def get_thumb(videoid):
             title = title.title()
         except:
             title = "Unsupported Title"
-          
-        try:
+          try:
             duration = result["duration"]
         except:
             duration = "Unknown Mins"
-           
-        thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         try:
             views = result["v"]["s"]
         except:
             views = "Unknown Views"
- 
         try:
             channel = result["c"]["n"]
        except:
