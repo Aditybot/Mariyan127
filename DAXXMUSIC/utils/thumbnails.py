@@ -100,7 +100,7 @@ async def get_thumb(videoid):
                 await f.write(await resp.read())
                 await f.close()
 
-    youtube = Image.open(f"cache/thumb{videoid}.png")
+    youtube = Image.open("DAXXMUSIC/assets/thum.png")
     image1 = changeImageSize(1280, 720, youtube)
     image2 = image1.convert("RGBA")
     background = image2.filter(filter=ImageFilter.BoxBlur(20))
@@ -149,7 +149,7 @@ async def get_thumb(videoid):
     draw.text((text_x_position, 400), "00:00", (255, 255, 255), font=arial)
     draw.text((1080, 400), duration, (255, 255, 255), font=arial)
 
-    play_icons = Image.open("DAXXMUSIC/assets/assets/play_icons.png")
+    play_icons = Image.open("DAXXMUSIC/assets/thum.png")
     play_icons = play_icons.resize((580, 62))
     background.paste(play_icons, (text_x_position, 450), play_icons)
 
