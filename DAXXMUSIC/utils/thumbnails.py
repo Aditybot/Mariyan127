@@ -66,7 +66,7 @@ def crop_center_circle(img, output_size, border, crop_scale=1.5):
 
 
 
-async def get_thumb(videoid):
+    async def get_thumb(videoid):
     if os.path.isfile(f"cache/{videoid}_v4.png"):
         return f"cache/{videoid}_v4.png"
 
@@ -74,24 +74,24 @@ async def get_thumb(videoid):
     results = VideosSearch(url, limit=1)
     for result in (await results.next())["result"]:
         try:
-            title = result["t"]
+            title = result["title"]
             title = re.sub("\W+", " ", title)
             title = title.title()
         except:
-            title = "hi"
+            title = "Unsupported Title"
         try:
-            duration = result["d"]
+            duration = result["duration"]
         except:
-            duration = "hi"
+            duration = "Unknown Mins"
         thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         try:
-            views = result[""]["s"]
+            views = result["viewCount"]["short"]
         except:
-            views = "hi"
+            views = "Unknown Views"
         try:
-            channel = result["c"]["h"]
+            channel = result["channel"]["name"]
         except:
-            channel = "hi"
+            channel = "Unknown Channel"
 
     async with aiohttp.ClientSession() as session:
         async with session.get(thumbnail) as resp:
