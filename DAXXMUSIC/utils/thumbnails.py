@@ -31,8 +31,8 @@ def truncate(text):
     return [text1,text2]
 
 def crop_center_circle(img, output_size, border, crop_scale=1.5):
-    half_the_width = img.size[0] / 1
-    half_the_height = img.size[1] / 1
+    half_the_width = img.size[0] / 2
+    half_the_height = img.size[1] / 2
     larger_size = int(output_size * crop_scale)
     img = img.crop(
         (
@@ -128,27 +128,26 @@ async def get_thumb(videoid):
     line_length = 580  
 
     
-    red_length = int(line_length * 0.1)
+    red_length = int(line_length * 0.6)
     white_length = line_length - red_length
 
     
     start_point_red = (text_x_position, 380)
     end_point_red = (text_x_position + red_length, 380)
-    draw.line([start_point_red, end_point_red], fill="red", width=1)
+    draw.line([start_point_red, end_point_red], fill="red", width=9)
 
     
     start_point_white = (text_x_position + red_length, 380)
     end_point_white = (text_x_position + line_length, 380)
-    draw.line([start_point_white, end_point_white], fill="white", width=0)
+    draw.line([start_point_white, end_point_white], fill="white", width=8)
 
     
-    circle_radius = 1 
+    circle_radius = 1
     circle_position = (end_point_red[0], end_point_red[1])
     draw.ellipse([circle_position[0] - circle_radius, circle_position[1] - circle_radius,
                   circle_position[0] + circle_radius, circle_position[1] + circle_radius], fill="red")
     draw.text((text_x_position, 400), "00:00", (255, 255, 255), font=arial)
     draw.text((1080, 400), duration, (255, 255, 255), font=arial)
-
     try:
         os.remove(f"cache/thumb{videoid}.png")
     except:
