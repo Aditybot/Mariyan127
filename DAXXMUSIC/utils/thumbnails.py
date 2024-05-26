@@ -100,19 +100,19 @@ async def get_thumb(videoid):
                 await f.write(await resp.read())
                 await f.close()
 
-    youtube = Image.open(f"cache/thumb{videoid}.png")
+    youtube = Image.open("DAXXMUSIC/assets/thum.png")
     image1 = changeImageSize(1280, 720, youtube)
     image2 = image1.convert("RGBA")
-    background = image2.filter(filter=ImageFilter.BoxBlur(20))
+    background = image2.filter(filter=ImageFilter.BoxBlur(0))
     enhancer = ImageEnhance.Brightness(background)
-    background = enhancer.enhance(0.6)
+    background = enhancer.enhance(0.9)
     draw = ImageDraw.Draw(background)
     arial = ImageFont.truetype("DAXXMUSIC/assets/assets/font2.ttf", 30)
     font = ImageFont.truetype("DAXXMUSIC/assets/assets/font.ttf", 30)
     title_font = ImageFont.truetype("DAXXMUSIC/assets/assets/font3.ttf", 45)
 
 
-    circle_thumbnail = crop_center_circle(youtube, 400, 20)
+    circle_thumbnail = crop_center_circle(youtube, 0, 0)
     circle_thumbnail = circle_thumbnail.resize((400, 400))
     circle_position = (120, 160)
     background.paste(circle_thumbnail, circle_position, circle_thumbnail)
