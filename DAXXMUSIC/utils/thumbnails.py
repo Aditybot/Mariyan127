@@ -134,20 +134,20 @@ async def get_thumb(videoid):
     
     start_point_red = (text_x_position, 380)
     end_point_red = (text_x_position + red_length, 380)
-    draw.line([start_point_red, end_point_red], fill="red", width=9)
+    #draw.line([start_point_red, end_point_red], fill="red", width=9)
 
     
     start_point_white = (text_x_position + red_length, 380)
     end_point_white = (text_x_position + line_length, 380)
-    draw.line([start_point_white, end_point_white], fill="white", width=8)
+    #draw.line([start_point_white, end_point_white], fill="white", width=8)
 
     
     circle_radius = 10 
     circle_position = (end_point_red[0], end_point_red[1])
-    draw.ellipse([circle_position[0] - circle_radius, circle_position[1] - circle_radius,
+    #draw.ellipse([circle_position[0] - circle_radius, circle_position[1] - circle_radius,
                   circle_position[0] + circle_radius, circle_position[1] + circle_radius], fill="red")
-    draw.text((text_x_position, 400), "00:00", (255, 255, 255), font=arial)
-    draw.text((1080, 400), duration, (255, 255, 255), font=arial)
+    #draw.text((text_x_position, 400), "00:00", (255, 255, 255), font=arial)
+    #draw.text((1080, 400), duration, (255, 255, 255), font=arial)
     
     try:
         os.remove(f"cache/thumb{videoid}.png")
